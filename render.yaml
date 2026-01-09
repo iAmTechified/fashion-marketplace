@@ -5,7 +5,7 @@ services:
     region: oregon
     plan: starter
     buildCommand: docker build -t fashion-marketplace .
-    startCommand: ./entrypoint.sh
+    buildCommand: docker build -t fashion-marketplace .
     envVars:
       - key: APP_NAME
         value: FashionMarketplace
