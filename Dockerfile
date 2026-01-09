@@ -1,10 +1,4 @@
-# Stage 1: Build Frontend Assets
-FROM node:20 as frontend
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
+
 
 # Stage 2: Install Backend Dependencies
 FROM composer:2 as backend
@@ -56,8 +50,7 @@ WORKDIR /var/www/html
 # Copy Backend Dependencies from Stage 2
 COPY --from=backend /app/vendor ./vendor
 
-# Copy Frontend Assets from Stage 1
-COPY --from=frontend /app/public/build ./public/build
+
 
 # Copy Application Code
 COPY . .
