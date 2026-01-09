@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-| This file is intentionally left blank for this API-only project.
-|
-*/
+
+Route::get('/', function () {
+    return response()->json([
+        'status' => 'Fashion Marketplace API is running',
+        'documentation' => 'See /docs/deployment.md for deployment info',
+        'version' => app()->version(),
+    ]);
+});
+
