@@ -60,7 +60,9 @@ return [
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true,
+                // Force SSL Mode (requires PHP 7.3.7+ / 7.2.19+)
+                PDO::MYSQL_ATTR_SSL_MODE => PDO::MYSQL_ATTR_SSL_MODE_VERIFY_IDENTITY,
             ], function ($value) {
                 return !is_null($value); }) : [],
         ],
